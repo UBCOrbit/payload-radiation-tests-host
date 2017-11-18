@@ -12,7 +12,7 @@ import time
 import serial
 import queue
 
-SIGNAL_START = "START" # no \n for checking incoming signals because of newline inconsistencies (\r\n vs \n vs \r)
+SIGNAL_HEARTBEAT = "HEARTBEAT" # no \n for checking incoming signals because of newline inconsistencies (\r\n vs \n vs \r)
 SIGNAL_POWER_CYCLE = "POWER_CYCLE\n" # \n for outgoing signal
 
 class Device:
@@ -32,10 +32,10 @@ class RadTestController():
         self.fd = None
         self.old_settings = None
 
-        self.tx2 = Device(id='COM7', commonName='TX2', baud=9600, timeout=1, ser=None)
+        self.tx2 = Device(id='COM7', commonName='TX2', baud=9600, timeout=5, ser=None)
         self.arduino = Device(id='COM8', commonName='Arduino', baud=9600, timeout=1, ser=None)
 
-        self.startReceived = False
+        self.heartbeatReceived = False
 
         try:
             # Windows
@@ -109,19 +109,20 @@ class RadTestController():
                 pass
 
             if not device.ser:
-                print("Could not connect to " + device.commonName + " at " + device.id)
-                print("Press \'enter\' to try again or \'esc\' to exit.")
+                print("ERROR: Unable to connect to " + device.commonName + " at " + device.id)
+                print("Retrying...")
 
-                while True:
-                    if not self.input_queue.empty():
-                        keyboardInput = self.input_queue.get()
-                        if ord(keyboardInput) == 27:
-                            self.stop_queue.put('stop')
-                            self.cleanUp()
-                            sys.exit(1)
-                        else:
-                            # Pressing any key other than 'esc' will continue the monitor
-                            break
+                time.sleep(1) # Wait 1 seconds before retrying
+
+                if not self.input_queue.empty():
+                    keyboardInput = self.input_queue.get()
+                    if ord(keyboardInput) == 27:
+                        self.stop_queue.put('stop')
+                        self.cleanUp()
+                        sys.exit(1)
+                    else:
+                        # Pressing any key other than 'esc' will continue the monitor
+                        break
 
     def __connect_tx2(self):
         print("Connecting to TX2...")
@@ -138,21 +139,25 @@ class RadTestController():
         self.__connect_arduino()
 
     def __disconnect_tx2(self):
-        print("Disconnecting from TX2...")
-        self.tx2.ser.close()
-        print("Disconnected!")
+        if self.tx2.ser != None:
+            print("Disconnecting from TX2...")
+            self.tx2.ser.close()
+            self.tx2.ser = None
+            print("Disconnected!")
 
     def __disconnect_arduino(self):
-        print("Disconnecting from Arduino...")
-        self.tx2.ser.close()
-        print("Disconnected!")
+        if self.arduino.ser != None:
+            print("Disconnecting from Arduino...")
+            self.arduino.ser.close()
+            self.arduino.ser = None
+            print("Disconnected!")
 
     def disconnect(self):
         self.__disconnect_tx2()
         self.__disconnect_arduino()
 
     def __cycle_power(self):
-        #self.__disconnect_tx2()
+        self.__disconnect_tx2()
 
         print("Sending POWER_CYCLE signal...\n")
         self.arduino.ser.write(SIGNAL_POWER_CYCLE.encode('utf-8'))
@@ -178,19 +183,18 @@ class RadTestController():
             try:
                 lineBytes = self.tx2.ser.readline()
                 line = lineBytes.decode('utf-8').strip()
-                
                 if line == '':
-                    if self.startReceived:
+                    if self.heartbeatReceived: # Only start caring about the TX2 once we've received a heartbeat signal
                         # TX2 Not Responding
-                        print("\nERROR: TX2 Not Responding")
+                        print("\nERROR: TX2 Not Responding\n")
                         self.__cycle_power()
-                elif line == SIGNAL_START:
-                    self.startReceived = True
+                elif line == SIGNAL_HEARTBEAT:
+                    self.heartbeatReceived = True
                 else:
                     print("RECEIVED: " + line)
-            except IOError:
+            except IOError as e:
                 # Manually raise the error again so it can be caught outside of this method
-                raise IOError()
+                raise e
 
 
 # MAIN
@@ -199,12 +203,15 @@ controller = RadTestController()
 
 while True:
     try:
+        time.sleep(1) # Delay one second
         controller.connect()
         controller.run()
     except serial.SerialException:
         print ("Error: Disconnected (Serial exception)")
-    except IOError:
+    except IOError as e:
         print ("Error: Disconnected (I/O Error)")
     except KeyboardInterrupt:
         print ("Keyboard Interrupt. Exiting Now...")
-        sys.exit(1)
+        break
+
+    controller.disconnect()
