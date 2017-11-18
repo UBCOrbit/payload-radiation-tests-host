@@ -12,6 +12,9 @@ import time
 import serial
 import queue
 
+SIGNAL_START = "START" # no \n for checking incoming signals because of newline inconsistencies (\r\n vs \n vs \r)
+SIGNAL_POWER_CYCLE = "POWER_CYCLE\n" # \n for outgoing signal
+
 class Device:
     __slots__ =  ['id', 'commonName', 'baud', 'timeout', 'ser']
     def __init__(self,  id, commonName, baud, timeout, ser):
@@ -31,6 +34,8 @@ class RadTestController():
 
         self.tx2 = Device(id='COM7', commonName='TX2', baud=9600, timeout=1, ser=None)
         self.arduino = Device(id='COM8', commonName='Arduino', baud=9600, timeout=1, ser=None)
+
+        self.startReceived = False
 
         try:
             # Windows
@@ -118,14 +123,41 @@ class RadTestController():
                             # Pressing any key other than 'esc' will continue the monitor
                             break
 
-    def connect(self):
-        print("Connected to TX2...")
+    def __connect_tx2(self):
+        print("Connecting to TX2...")
         self.__connect_device(self.tx2)
         print("Connected!\n")
 
-        print("Connected to Arduino...")
+    def __connect_arduino(self):
+        print("Connecting to Arduino...")
         self.__connect_device(self.arduino)
         print("Connected!\n")
+
+    def connect(self):
+        self.__connect_tx2()
+        self.__connect_arduino()
+
+    def __disconnect_tx2(self):
+        print("Disconnecting from TX2...")
+        self.tx2.ser.close()
+        print("Disconnected!")
+
+    def __disconnect_arduino(self):
+        print("Disconnecting from Arduino...")
+        self.tx2.ser.close()
+        print("Disconnected!")
+
+    def disconnect(self):
+        self.__disconnect_tx2()
+        self.__disconnect_arduino()
+
+    def __cycle_power(self):
+        #self.__disconnect_tx2()
+
+        print("Sending POWER_CYCLE signal...\n")
+        self.arduino.ser.write(SIGNAL_POWER_CYCLE.encode('utf-8'))
+
+        self.__connect_tx2()
 
     def run(self):
         self.tx2.ser.flushInput()
@@ -134,23 +166,28 @@ class RadTestController():
         while True:
             if not self.input_queue.empty():
                 keyboardInput = self.input_queue.get()
-                if ord(keyboardInput) == 27:
+                if ord(keyboardInput) == 27: # Escape key
                     self.stop_queue.put('stop')
                     self.cleanUp()
                     sys.exit(1)
-                elif ord(keyboardInput) == 13:
-                    self.ser.write("RESET\n".encode('utf-8'))
+                elif ord(keyboardInput) == 13: # Enter key
+                    # Manuall cycle power
+                    self.__cycle_power()
 
             # Check for TX2 output:
             try:
-                line = self.tx2.ser.readline()
-
-                if line == b'':
-                    print("TX2 Not Responding")
-                    self.arduino.ser.write("RESET\n".encode('utf-8'))
-                    return
+                lineBytes = self.tx2.ser.readline()
+                line = lineBytes.decode('utf-8').strip()
+                
+                if line == '':
+                    if self.startReceived:
+                        # TX2 Not Responding
+                        print("\nERROR: TX2 Not Responding")
+                        self.__cycle_power()
+                elif line == SIGNAL_START:
+                    self.startReceived = True
                 else:
-                    print(line.decode('utf-8').strip())
+                    print("RECEIVED: " + line)
             except IOError:
                 # Manually raise the error again so it can be caught outside of this method
                 raise IOError()
