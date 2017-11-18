@@ -12,12 +12,25 @@ import time
 import serial
 import queue
 
-class PythonSerialMonitor():
+class Device:
+    __slots__ =  ['id', 'commonName', 'baud', 'timeout', 'ser']
+    def __init__(self,  id, commonName, baud, timeout, ser):
+        self.id = id
+        self.commonName = commonName
+        self.baud = baud
+        self.timeout = timeout
+        self.ser = ser
+
+class RadTestController():
+
     def __init__(self):
         self.windows = False
         self.unix = False
         self.fd = None
         self.old_settings = None
+
+        self.tx2 = Device(id='COM7', commonName='TX2', baud=9600, timeout=1, ser=None)
+        self.arduino = Device(id='COM8', commonName='Arduino', baud=9600, timeout=1, ser=None)
 
         try:
             # Windows
@@ -70,28 +83,30 @@ class PythonSerialMonitor():
                 if stop_queue.get() == 'stop':
                     break
 
-    def run(self):
-        baud = 9600
-        baseports = ['/dev/ttyUSB', '/dev/ttyACM', 'COM', '/dev/tty.usbmodem1234']
-        self.ser = None
-
-        while not self.ser:
-            for baseport in baseports:
-                if self.ser:
+    def __checkEscape(self):
+        while True:
+            if not self.input_queue.empty():
+                keyboardInput = self.input_queue.get()
+                if ord(keyboardInput) == 27:
+                    self.stop_queue.put('stop')
+                    self.cleanUp()
+                    sys.exit(1)
+                else:
+                    # Pressing any key other than 'esc' will continue the monitor
                     break
-                for i in range(0, 64):
-                    try:
-                        port = baseport + str(i)
-                        self.ser = serial.Serial(port, baud, timeout=5)
-                        print("Monitor: Opened " + port + '\r')
-                        break
-                    except:
-                        self.ser = None
-                        pass
+                        
+    def __connect_device(self, device):
+        while not device.ser:
+            try:
+                device.ser = serial.Serial(device.id, device.baud, timeout=device.timeout)
+            except:
+                device.ser = None
+                pass
 
-            if not self.ser:
-                print("Monitor: Couldn't open a serial port.")
-                print("Monitor: Press \'enter\' to try again or \'esc\' to exit.")
+            if not device.ser:
+                print("Could not connect to " + device.commonName + " at " + device.id)
+                print("Press \'enter\' to try again or \'esc\' to exit.")
+
                 while True:
                     if not self.input_queue.empty():
                         keyboardInput = self.input_queue.get()
@@ -103,40 +118,56 @@ class PythonSerialMonitor():
                             # Pressing any key other than 'esc' will continue the monitor
                             break
 
-        self.ser.flushInput()
+    def connect(self):
+        print("Connected to TX2...")
+        self.__connect_device(self.tx2)
+        print("Connected!\n")
+
+        print("Connected to Arduino...")
+        self.__connect_device(self.arduino)
+        print("Connected!\n")
+
+    def run(self):
+        self.tx2.ser.flushInput()
+        self.arduino.ser.flushInput()
 
         while True:
             if not self.input_queue.empty():
                 keyboardInput = self.input_queue.get()
-                self.ser.write(keyboardInput)
                 if ord(keyboardInput) == 27:
                     self.stop_queue.put('stop')
                     self.cleanUp()
                     sys.exit(1)
+                elif ord(keyboardInput) == 13:
+                    self.ser.write("RESET\n".encode('utf-8'))
 
             # Check for TX2 output:
             try:
-                line = self.ser.readline()
+                line = self.tx2.ser.readline()
 
                 if line == b'':
-                    print("Device Not Responding")
+                    print("TX2 Not Responding")
+                    self.arduino.ser.write("RESET\n".encode('utf-8'))
                     return
-                    # TODO trigger power cycle
                 else:
                     print(line.decode('utf-8').strip())
             except IOError:
                 # Manually raise the error again so it can be caught outside of this method
                 raise IOError()
 
-psm = PythonSerialMonitor()
+
+# MAIN
+
+controller = RadTestController()
 
 while True:
     try:
-            psm.run()
+        controller.connect()
+        controller.run()
     except serial.SerialException:
-        print ("Monitor: Disconnected (Serial exception)")
+        print ("Error: Disconnected (Serial exception)")
     except IOError:
-        print ("Monitor: Disconnected (I/O Error)")
+        print ("Error: Disconnected (I/O Error)")
     except KeyboardInterrupt:
-        print ("Monitor: Keyboard Interrupt. Exiting Now...")
+        print ("Keyboard Interrupt. Exiting Now...")
         sys.exit(1)
