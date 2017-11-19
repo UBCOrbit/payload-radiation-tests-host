@@ -1,0 +1,121 @@
+[0000.227] I> Welcome to MB2(TBoot-BPMP)(version: 01.00.160913-[0002.428] I> Kernel type = Normal
+[0002.432] I> Loading kernel/boot.img from sta0Ntfar]d:4 )0Li 0[0002.6lb r0Rl
+Itt7n a0[0002.4K 
+Ibd. 0Vm09mld1ggyx .0
+Ii 10[0>mT[05ixi0UrT2e: a 10 nvrc0oO=ft=ceom0e0g1eoxoa0ox2_os.a [.ray0c5odp413_r:4
+]o,[>nxn0i t6td- 1g0fcd0iy,0 d- 0ctrm0f-ig94e:119:fioe,g- 0AnsB00.co,[Ex t.ia5=078lnc0 id-8@22dt
+ 0ta[02dm32[07nnsy0d-fw02ga/o0 iom 7nns-[Iu/0n0 o,[>gc[0]  [02eta2ms t0pe'e[>of[0002.79IlD
+0t_d
+
+U-Boot 2016.0215TdP07.8 GiB
+MC:   Tegra SD/MMC: 0, Tegra SD/MMC: 1
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   eth0: ethernet@2490000
+Hit any key to o 1  0 
+MMC: no card present
+switch to partitions #0, OK
+mmc0(part 0) is current device
+Scanning mmc 0:1...
+Found /boot/extlinux/extlinux.conf
+Retrieving file: /boot/extlinux/extlinux.conf
+213 bytes read in 78 ms (2 KiB/s)
+p2771-0000 eMMC boot options
+1:	primary kernel
+Enter choice: 1:	primary kernel
+Retrieving file: /boot/Image
+20280368 bytes read in 534 ms (36.2 MiB/s)
+append: root=/dev/mmcblk0p1 rw rootwait console=ttyS0,115200n8 console=tty0 OS=l4t fbcon=map:0 nnytonnm0rxp8gtcil7f14ttsvrrxt t s 2rti01ir 9d0
+r[    0.000000] Booting Linux on a00aop n y  gb0v.uo5s(MT0 0ocs70l s30'0trd Rmarvti0RM00[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.0 detn0Ur2D0iNt.Ceccs 6.ls lnl10edtltl2l4pmpeoeo,1md0i.pk6t03a00g_=v  = ]tsd8[  he1e8[ 0e i  t[    0.000000] Memory: 7972328K/8204288K available (109 earKK2,a
+0lo0af0f0 . 00f0 m.  2x7 a. 07f01  Ob-f(
+0df0f0M. 00f10  tc-0(
+0.f0f0K. 01fd8 ]leOPs.eeCt  e n
+0sP_n60 e l_
+[0Qs[   0nI [  0t n.)0kcexfl7d50_iznp8s[ Coe5eb0oub[    0.000000] Booting Linux on physical CPU 0x100
+[    0.000000] Initializing cgroup subsys cpuset
+[    0.000000] Initializing cgroup subp0iop i an-e ST020ohr0nia3i ]ea0syeo, a cd00 p   0c  [0nPn[0GYo Ed/c3d201irg s[0mrcoo5l4:e=ro1a30e7t._lso=9a00ra mrt0sro7[0cl1e6[0he2:4 ]78er8 at eKe.tmt0mf0f B0ef0f  [] b 9 u. xff0 . x0f0 . x0f0 . x0f0 . xcf0 . x8f0 . x1f3 0U63s    le ]e o[0tsUc[0sra4s0Rq Gpc0eiiM
+0rsafxea8 0dbzns0
+8:mx0on oul.mlki Cdslee.o2 iui
+2yi
+5cl1:b ocl1:b ncs[5iu
+6=.1[710U[370   ts3[8:10ab2epC s T:itr46..raq-600[1 0:0:os30:os3.3ce0.4ce00Uecd0oP1 pc ]Pd ]i
+7iI0usfcfi50.cnis0 c41l r3ai[4ou1 adnh23/gtter0dam tn ]irk0w=04/gt-tr0 ome30 0[7u/v >21 atow=04/g-ni304/g-ct32lr3m 0[5gf1mo1  na-i304/g-aa0 n-g0 *6pepmi304gpo6gt 1o1[6emse[8a00/6lvr5ee[8td bad6sg[8no bn d f0@2 htrdn.8_:r1l 9pi  m/aklrs.wpxe13-7l 5 ehs RTcyl[31mhf.3mi2  0:r[31m 8uodn7m.e gs87m. c0rez01s0 k2 a0 94[6 m2AP2m.ss6Aeh 2uv.o0md0 
+8d  
+7d  
+4Aec7Aec1Aec4 c284 c295 c212uv.p.me0u0md0o o 0o[4d i 2uv.r ig0t
+3d eo ig0o[7dct
+2o[7ds  ] s0 [9ds8>
+2eef-3pdf004adf002ra3c _:
+3o[1r ]  ]   i Wr aq o 0g  n5o[0 :g e0g o [8:s06p s[9adime[4 : i tapW=2ac _U0Aeou o 0cp.me0x24:i. 7 cht
+9d s  ]i31r ig1:u o 0cp.me0g  n7 [8d1 8Aevg  n3o[0d1n32uv0r ig8t
+5d e45:i.o ig1g  n8  ]i5o[7d  8Aepp.r0r9[8dd 7pi.pm dcd.pm0 cm46lme/.Ocop G7 u[5 waw1iigu G5eg4nct 
+5prP5eo3iiou6h: oip  n0co[2dsu0md0o o _o ig3  ]:[8p
+4rwp3en 30si ]ewd1edau0ree1nhgu G2lag3cadtv97i-l 3prP2e[0in13xue  ivt0sw3g7oet3ct4d0:i [1_0Ru
+6 CPS P _gt9iita  ds oa4d .d2 v00d3   4dm3om3o0 m.- .d0mV6-0 v:[0  ]-6c  ncrl e3 e1  0  :[353t .v3
+8d0 n7
+1i00-2 7d2 v00dm3v0 n8
+8- 2sV8dm.o g)6- nc   :oeo nneel[9m_ spoa4piR0 noml810mnana Wr aq0k=0k=.e14891291aoela h.r_smro- hageh U  rRt eP ]e  en  ]e  en a2lnr ltt hageh I s:x0.mm6[7sc4ahio4
+8 e3,t.:s d   b :b D ed7 ]to
+4gee   ene1Rc   evnr[1ot .8 sl0  h3, [0sro2
+9nny)1 u)e4cp [3 :np4-.ki e0Me[3mmao4 ez4 ei0d.i f0t  0i
+65ge4uvoi()8c1tit
+4nexie[9t1:aa  x0tii o_05e=.meh  24uvoi()3Nex epraabar t0adl4a.Df0e9gta_g3[3aleei0wa07_wegg61vd_ E62vd_ h6[85sk  ]2p3  ] aAin0gnurnt ]2pn_   Dx0 30uka Dx0g0af 0gwwW0.D 0 3 e1,Ri Pe ]te70t is5  e0y[    2]td[ 50tM0  R[  iobe[  9eSxq_sR[5a0 o[  1lt04dT[ 7u[   k0lau[  7u[   ge=[  484iet[ 4_cp[  c c [484ita[1:enC[4rwp
+[9c bz[4L [   e[6Rd[6Rd[6Rd[ 5t8nozpa[4Arc[4Lfu[ ere[2fo[.r s[6aI2  id[2m PRp0  id[.vam(p2  id[.vam(p2  id[2m PRp0  id[2m PRp0 ] i
+ r] Oy  ]ii[  3-0 t1o[ 5halnlss  ]:   
+[6:D 7f1[ t[ s : o[.-6tnu[8r0cu ]r e[6 0y@m[2n1 2[5e(0r[ g eke-[2y0eo[6re  pue[9aie[2Pee  el
+ uiii[2btte[6orr a  g rh ]ewd5[5re 0 ]ewdu[1 ner ]ewdc  i[  0r[589 Wr[8o[689 aq[0g at2btteg uiiia ssnv  UutDl[5edap[7: iG-[6 ne3  Uut2 ]ctty  0 a4[.p:[ ]-.pv gpoM[9oe m[ am:raa[7_0ort[ e0g l[5vi[3]4
+  lSn[ t0at[.o  )[    3.592348] gspca_main: v2.14.0 registered
+[    3.597625] usbcore: registered new interface driver gspca_zc3xx
+[    3.605135] max77620-powx:rR[   A [ 2re[ An[9n-aw[ ]i:r c[  v  [._ph0[  pei=r0[  7da =,t[  pei=0r2[ wrn10d[ pei=0r3[ pei=0r3[ ]i:w6 e[ 2da m1a[ 3n-8rr [  wrn20r4[ 0mn1[  e:40ndh[ 0 ttr[8C a[3p dh[ 7i0a==[   9e.nla4[8a0 pp[3h6 s f[ iIii[   ]ewdd[3 e[    3.6Sl04]  [  6-0r 4[     cefe[   89 .[   1 pn [  v0Ai[ 0pspo[   kav[    7He00u44[  8Abe[   cP[ s3iI[ ccfa[ 8rd _0[ s3iii[3h0 s f[6h0i
+  ptn[ cn.li
+  u0on[ onf:t[.ec0:  ]e0.e ]e0.e[4-04z[4-04z[5ic
+[68 pfr0[ er0ed[.r0:i072[.r0:o==8=0[ tcc@ir2x10[ 7c0@  5Ta[ 3gbu@n x-60[ 9a0i2ur4848[ 7c0@vXdXf[   vt00x-x0[3gt0gI[  er0rns[ 6 .0es[ 3ebu2nm[  vtcni[ 3gbu@hr[   vtuci[1v0@hr[ ]ir0ni[ .rcrac4ca3
+[ ]c0cnh[  ev07ga[3m e [ ebo 
+ ]r: [7_keC[4-0 e[61abo[3g 2 [ tgxg ]i.iO[2r0iO[5r0iO[9r0iO ]i.dK  dag tgxe
+3g pp[9a1po[7-0bd ]i.dK * [08n4.sd 4 ael=3r_k23r_k9ete[1tbcd[7a0ni[.r milea[1elv_vee essz  h0sm[8-0t[6-5tb3gtee  h0sm[2-0t[6-5tb t :irs ct i[3gccpb[7_ tv[ 6p0ps0 0
+[715rs0 0
+  d.SA4[360:Ax[9p0uog[3glno n[9aapmnd ]- 5[ 4He00u44[ ctu n ]nceA
+[3crrrrr[ Trlu:l[.rumts[ e  aYd[82payf
+  soa c[5-ut  [ tp:rB[3gaa so[3gauh0[9alee[ 9:H3sa0[ 9:H7sa0[ Pp[4a 
+[4grt eIe [ 1no IIo[ ]tlu  
+[4grt  p[ 6--5MMg[ 4no IIo[ 5dbsFFk[ 6no IIo[ 2smxAA [ 6--5MMg[ .re5A p[   1en 1[ 2smxAMn[  e6r:-m[  1do FI [ 4grt >a[  4dbsFI [ .re5A p[  0-io1Fo[ .re5A p[  6-io2Fo[ .re5A a[  5dbsF g[ o:-Rk[6sPSp[  ]re5ndd1[  ]tlua"[2no  c[ Ai[ ]i [1c[ ]s[7r 66[ ] uv[0a k[3eoy[0a0fT[0Rrl[1 pi[ 4 fateeoteys[70u
+  c a[1sdh[1st [30t[4c.i[179 ] [179 ] [209 Wr[2f
+4c0Ta[.i0 a[.-1tnu[.i0ree_ir[0e.ns[.-6tnu[2a. r
+4gg2S,[5-uat[2gted[5-NOe  xa 
+4ggtrr[3ogre ] sna[3u0t
+4g cE[1 aoF[1aai
+ pi88[5 spu[ 2tts 1U6[6us[2mAcr[8dn ]:
+ ni[2sb[6-n  -i ]-i ]pl ]-a[1ca[7 [.-i  2n v [2sb[5s4Ss  -10  no e0i[3i /.[  .0t l[    5.398eel m4 0[2:0G[8o0r0[50:  [4l043[   ]ppp11[    5.479859] mmc1: queuing unknown CIS tup8[    5.519738] EXT4-fs (mmcblk0p1): al[6 :o[    5Ebntedu[5nxee[    o[ 5nr f 1[ 6ge60f0[    5.674009] random: systemd: uninitialized urandom read (16 bytes read, 89 bits of entropy available)[   reaob9na[6  e[.1 [ m_0[ m_0[ m_0[ m_0[ m_0[9n5[6:d
+ m_0[0p|:[1DI00[4en0s[3 s t0[  yyus++A+ILPNXC+M[ 11 e[    5.80ston[    5.822948] yia1dfa[ 8yslmy7tb[ re eesip)[ amuda ty[ re eesip)[ ]sti t rl[ 4:ttn6, i[ 5ndn drs 
+[    6.004905] systemd[1]: Listening on udev Control Socket.
+[    6.012668] systemd[1]: Listening i[  2]ane[  31g [     wdot
+[ 3[nnte[    g[ 6sc  e[ sRel
+[.tts[.tcEl[ ]:ool[ 8]ldi[   ci[    iS[  6su .[  ]:eai.[  3mitue.[   cry[    6.157]a.[ 6saa.[  4dnsevon[  ytca[    51  
+[.ttec[3g g)[   sMgm[   r.[    6.311900] systemd-journald[270]: Received request to flush runtime journal from PID[    6.362361] random: nonblocking pool is iz[    6.515328] tegra-pcie 10003000.pcie-controller: 4x1, 1x1 configuration
+[    6.525205] tegra-pcie 10003000.pcie-controller: PCIE: Enable pow[    4ecepg[    6.2c.lgi
+[    6.582084] xhci-tegra 3hfefd[    6.756939] dhd_module_init in
+[    6.786217] tegra_net_perf_init: cannot get wifi sclk
+[    6.792267] found wifi platform device bcmdhd_wlan
+[    6.799384] gpio tegaoF[ 0p_e np[  wvpnpi[ Ppnr[3p_[    6.982371] tegra-pcie 10003000.pcie-controller: link 0 down, retrying
+[    7.038383] wifi_platform_bus_enumerate device present 1
+[    7.067300] wifi_platform_bus_enumerate device present 0
+[    7.094591] F1 signature read @0x1800000x[    7.144286] F1 signature OK, socitype:0x1 ch4 [    7.187150] cfg80211: World regulatou[ ]es440[.irl s[  rd[ 12s [  61frdn (e[ .802@, [ 71000/)[    zKK2N[  9 K000 m
+[ 7g2  , , [    zK  ([  ] H   ([    H00/([  Rpgn[ 2tdahs[   ]Rn tf[2arc:[2ar:[8te3
+[8e_ql[   0H 0 ]ntc 0[  ]s[    7.392 tn::3[   hlo d[  d4:ee l[ ]or[ t0- ,[    7.592017] xhci-tegra 3530000.xhci: Firmware timestamp: 2017-03-31 06:21:56 UTC, Version: 55.07 release
+[    7.605995] xhci-tegra 3530000.xIo[  0acbe 1[ 6e.afsu0[6-0 0[ 4 id,0[    uw r=m[ sdoe[2:e4h[. l0[7bS  :t[6-0Io[  3:s,u
+  eeei0[7bUt3,e[  r l[2st a[ ur3  :u[01 [ 4t:0s[7-0e[ h3eG[    7.851728] tegra-pcie 10003000.pcie-controller: link 0 down, retrying
+[    7.861205] tegra-p1e:n
+[    7.904066] IPv6: ADDRCONF(NETDEV_Pna[   ]- 1[  0R_lr[    7.965053] IPv6: ADDRCONF(NETDEV_UP)wi[   7 DDi .pve 0:[2r [7p_[    8.0 1ed[    8.243942] mmc1: queuing unknown CIS tuple 0x80 (5 bytes)
+[    8.268383] tegra-pcie 10003000.pcie-controller: link 2 down, retrying
+[    8.319253] sdhci-tegra 3440000.sdhci: Tuning already done, restort: ]r82[   .s,x5k[4diog [    8.409090] dhdsdio_write_vars: Download, Upload and compa c[    8.458620] dhd_bus_init: enable 0x06, reai[7g g)4 aoF.b[ 8p_[ .m_,4
+[    4pl_oa[    3ew2036 [ ._giWt to[    8.616083] CPU1: shutdown
+[    8.619173] psci: CPU1 killed.
+[    8.622705] process 740r n[    8.642087]Cwdfre[ Pn5 .6etntUbun6et W_n
+tlogidi[    8.719605] tegra-pcie 10003000.pco2yLast login: Sun Nov 19 22:  [    8.907606] fuse init (API version 7.23)
+[    9.100280] tegra-pcie 10003000.pcie-controller: link 2 down, retrying
+[    9.108889] tegra-pcie 10003000.pcie-controller: link 2 down, igi e0cP c t0- llWelcome to Ubuntu 16.Txr
+ntb*:/cmtt.gk   dnvidia@tegra-ubuntu:~$

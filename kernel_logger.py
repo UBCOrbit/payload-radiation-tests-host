@@ -13,12 +13,7 @@ import serial
 import queue
 import os
 
-SIGNAL_HEARTBEAT = "HEARTBEAT" # no \n for checking incoming signals because of newline inconsistencies (\r\n vs \n vs \r)
-SIGNAL_POWER_CYCLE = "POWER_CYCLE\n" # \n for outgoing signal
-SIGNAL_POWER_ON = "POWER_ON\n" # \n for outgoing signal
-SIGNAL_RAD = "RAD\n" # \n for outgoing signal
-
-DIR_OUTPUT = "output"
+DIR_OUTPUT = "kernel_log"
 
 class Device:
     __slots__ =  ['id', 'commonName', 'baud', 'timeout', 'ser']
@@ -31,16 +26,13 @@ class Device:
 
 class RadTestController():
 
-    def __init__(self, tx2Port, arduinoPort):
+    def __init__(self, arduinoPort):
         self.windows = False
         self.unix = False
         self.fd = None
         self.old_settings = None
 
-        self.tx2 = Device(id=tx2Port, commonName='TX2', baud=9600, timeout=2, ser=None)
         self.arduino = Device(id=arduinoPort, commonName='Arduino', baud=9600, timeout=1, ser=None)
-
-        self.heartbeatReceived = False
         
         if not os.path.exists(DIR_OUTPUT):
             os.makedirs(DIR_OUTPUT)
@@ -132,27 +124,13 @@ class RadTestController():
                         # Pressing any key other than 'esc' will continue the monitor
                         break
 
-    def __connect_tx2(self):
-        print("Connecting to TX2...")
-        self.__connect_device(self.tx2)
-        print("Connected!\n")
-
     def __connect_arduino(self):
         print("Connecting to Arduino...")
         self.__connect_device(self.arduino)
         print("Connected!\n")
 
     def connect(self):
-        self.__connect_tx2()
         self.__connect_arduino()
-
-    def __disconnect_tx2(self):
-        if self.tx2.ser != None:
-            print("Disconnecting from TX2...")
-            self.tx2.ser.close()
-            self.tx2.ser = None
-            self.heartbeatReceived = False
-            print("Disconnected!")
 
     def __disconnect_arduino(self):
         if self.arduino.ser != None:
@@ -162,94 +140,48 @@ class RadTestController():
             print("Disconnected!")
 
     def disconnect(self):
-        self.__disconnect_tx2()
         self.__disconnect_arduino()
 
-    def __cycle_power(self):
-        self.__disconnect_tx2()
-
-        print("Sending POWER_CYCLE signal...\n")
-        self.arduino.ser.write(SIGNAL_POWER_CYCLE.encode('utf-8'))
-
-        self.__connect_tx2()
-
-    def __power_on(self):
-        print("Sending POWER_ON signal...\n")
-        self.arduino.ser.write(SIGNAL_POWER_ON.encode('utf-8'))
-
-    def __send_rad_signal(self):
-        print("Sending RAD signal...\n")
-        self.tx2.ser.write(SIGNAL_RAD.encode('utf-8'))
-
     def run(self, errorFile):
-        self.tx2.ser.flushInput()
         self.arduino.ser.flushInput()
 
-        print("\nWaiting for HEARTBEAT...\n")
-
         self.currentFilename = DIR_OUTPUT + "/output_" + str(int(time.time())) + ".txt"
-        self.kernelLogFilename = DIR_OUTPUT + "/output_" + str(int(time.time())) + ".txt"
         
         with open(self.currentFilename, 'w') as outputFile:
-            with open(self.kernelLogFilename, 'w') as kernelLogFile:
-                while True:
-                    if not self.input_queue.empty():
-                        keyboardInput = self.input_queue.get()
-                        if ord(keyboardInput) == 27: # Escape key
-                            self.stop_queue.put('stop')
-                            self.cleanUp()
-                            sys.exit(1)
-                        elif ord(keyboardInput) == 88: # Uppercase X
-                            # Manual cycle power
-                            self.__cycle_power()
-                        elif ord(keyboardInput) == 80: # Uppercase P
-                            # Power on
-                            self.__power_on()
+            while True:
+                if not self.input_queue.empty():
+                    keyboardInput = self.input_queue.get()
+                    if ord(keyboardInput) == 27: # Escape key
+                        self.stop_queue.put('stop')
+                        self.cleanUp()
+                        sys.exit(1)
 
-                    # Check for TX2 output:
-                    try:
-                        lineBytes = self.tx2.ser.readline()
-                        line = lineBytes.decode('utf-8').strip()
-                        if line == '':
-                            if self.heartbeatReceived: # Only start caring about the TX2 once we've received a heartbeat signal
-                                # TX2 Not Responding
-                                print("\nERROR: TX2 Not Responding\n")
-                                self.__cycle_power()
-                                errorFile.write("[" + str(int(time.time())) + "]" + "Not Responding: " + + "\n")
-                        elif line == SIGNAL_HEARTBEAT:
-                            if not self.heartbeatReceived:
-                                print("\nFirst HEARTBEAT received\n")
-                            self.heartbeatReceived = True
-                        else:
-                            print("RECEIVED: " + line)
-                            outputFile.write(line + "\n")
-
-                        try:
-                            kernelBytes = self.arduino.readline()
-                            line = lineBytes.decode('utf-8').strip()
-                            if line == '':
-                                pass
-                            else:
-                                kernelLogFile.write(line + "\n")
-                        except:
-                            pass # Swallow
-                    except IOError as e:
-                        raise e
-                    except:
-                        errorInfo = "GENERAL ERROR"
-                        print(errorInfo)
-                        errorFile.write("[" + str(int(time.time())) + "]" + errorInfo + "\n")
+                # Check for Arduino output:
+                try:
+                    lineBytes = self.arduino.ser.readline()
+                    line = lineBytes.decode('utf-8').strip()
+                    if line == '':
+                        pass
+                    else:
+                        print("RECEIVED: " + line)
+                        outputFile.write(line + "\n")
+                except IOError as e:
+                    raise e
+                except:
+                    errorInfo = "GENERAL ERROR"
+                    print(errorInfo)
+                    errorFile.write("[" + str(int(time.time())) + "]" + errorInfo + "\n")
 
 # end RadTestController
 
 # MAIN
 
-if len(sys.argv) <= 2:
+if len(sys.argv) <= 1:
     print("\nUsage:")
-    print("rad_test_controller.py <tx2 port> <arduino port>\n")
+    print("rad_test_controller.py <arduino port>\n")
     exit(1)
 
-controller = RadTestController(sys.argv[1], sys.argv[2])
+controller = RadTestController(sys.argv[1])
 
 with open("output/errors.txt", 'w') as errorFile:
     while True:

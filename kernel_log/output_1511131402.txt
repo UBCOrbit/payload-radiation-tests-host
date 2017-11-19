@@ -1,0 +1,162 @@
+[0000.195] I> Welcome to MB2(TBoot-BPMP)(version: 01.00.160913-t186-M-00.00-mobile-2c57a56c)
+[0000.203] I> Default Heap @ [0xd486400 - 0xd402Ha50 00Rt20oM[4baz0me)0Rf 0[.dmr0[04 s30Rf 0[0  id[    i0t 0 p 7n 0[ t-0:8  :n1[0000.300i
+i.us0 p 1n  02nrdc0d0o7s[0000.34> 7d0[0000.522] I> BPMP-FW load address = 0xd7800000
+[0000.526] I> BPMP-FW DTB load address = 0x5018e200
+[0000.531] I> Loading SCE-FW ...
+[000.vunh[>aa]ns0ota05nrdc0d0o7s[00> 9 01C.yo7lb r0Rl
+Ito.doo60Rhd0[ 9a8_[00001( o00o ot e 2b)[>rlt]  3s6:,k  [00001( o302 01p
+]a0
+ox0  .vunh[>aa4i 0Li-00aa:b0 0-4o[00I)4d0.y ex
+0g0[7l[Ie8e[IM:z[3i50 P
+NOTICE:  BL31:1)O10lN:m. atet[0001.108] I> Welcome to Cboot
+[0001.111] I> Cboot Version: 00.00.2014.50-t186-96ecc32e
+[0001.116] I> CPU-BL Params @ 0x277200000
+[0001.1>xz04s011)e0[>xi08s011)b0[>xi02s041)a0[I0S06a000100[>xz0]e 11B000500[>xz06s00. c0010:
+I0i04s00. 00020:
+I0i03a001)0x0 0e :S04a001)00[>xz0]e001)0x0 fe0]e 02B00077:
+I0i04s00. 000 2z0]e 03B000- 0nn[cs
+i 1ir0ti1tri]o]C]:3x
+n]v[0ssi0  r0[6n8d0[0ot0 G 0[0Ft0c9lb r0Rl
+Itt0n a0[0001.4K0[>80gre4lrrgni4av:tor.r_u
+[00]__e9i t:,:[00>igs9r[1gntni0ebPai4i a[009 rl[0001.527] I> register 'maxim' poee[0  0rm2[Ipei6i[000.d025nc0[0001.585] I> Device at /i201a s[0001.618] I> Device at /i@70 2a0eme[0Ee[>i e.rl00 1a0eme[3vd] ee0Ef9[6 0c9g=x7ipi[0001.705] I> Disabling gpiopi[]a00 d- 0ctrm0f-ig90_ 05] ,gnmt:cl0r:0e1npcs,gopf]i]p]a_
+Ioc1rN1a/o.4ieie0et[>y 6gka[0001.8 o re3 t.:10 tl2[0001.82 0.cmg1K4 0[>oo0Ce0f880 1vl t0[8to[00>a0x5do0def0dS=68 olte0=  = feet,neeg.ec6t3 a@ .t
+Iot[0ItM)8[>_A:d0ea 000i t9nsc0 o,[>i0,0 -e,:nhdi 7e:518g0fcd0iy,0 d- 0ctrmff-ig98 g-2o[E0 t.do,[Iu/0cl0 7xn3ga6im
+0ta2odt
+[0 lr0[00>gc-]pe3n0Anni07ga3o[>gc-g.iagl06iei1nnd[02d [0 dt
+Ete [ s s
+2lkc[0002.13 ep[]__n
+U-Boot 2016.c2:MA- 7.8 GiB
+MC:   Tegra SD/MMC: 0, Tegra SD/MMC: 1
+*** Warning - bad CRC, using default environment
+In:    serial
+Out:   serial
+Err:   serial
+Net:   eth0: ethernet@2490000
+Hit anka  1  0
+MMC: no card present
+switch to partitions #0, OK
+mmc0(part 0) is current device
+Scanning mmc 0:1...
+Found /boot/extlinux/extlinux.conf
+Retrieving file: /boot/extlinux/extlinux.conf
+213 bytes read in 78 ms (2 KiB/s)
+p2771-0000 eMMC boot options
+1:	primary kernel
+Enter choice:
+1:	primary kernel
+Retrieving file: /boot/Image
+20280368 bytes read in 534 ms (36.2 MiB/s)
+append: root=/dev/mmcblk0p1 rw rootwait console=ttyS0,115200n8 console=tty0 OS=l4t fbcon=map:0 nnytonnm0rxp8gtcil7f14ttsvrrxt t s 2rti01ir 9d0
+e
+[    0.000000] Booting Linux onc00ioc Igs  nbt0 4bm5r(ST0T Brs7.lynO0'.tad  ea vavs0R 00[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.0 deti.0 a.I.cIo.0Rd/f 290uieiia0 Kaoboo5olaay=cpc03ue0r0ec=o=9d00ttse1te[0 er7[ ]cl r8)[ 0dsr8,y[    0.000000] Memory: 7972328K/8204288K available (109Ked 422da0lm0af0f0 0  0x0 i0  cxd u.  ax04 ]Of f 0df0f0 0  0x18 ]tf 0 0.f0f0 0  1xd1 0ldOCs.eiRn ]etn0eC_ 60 gr_r
+[0Rq[   0iIe[  0i5u1s.crt0fc1i1s0_bHoa9n[  ld54la b[a[    0.000000] Booting Linux on physical CPU 0x100
+[    0.000000] Initializing cgroup subsys cpuset
+[    0.000000] Initializing cgroup subp0iop i an-e ST02.t6
+0nia3i   b0syeo, a m x0 s   .idf[0nPn[0RPr0Rec11301irg s[0mrcoo5l4:e=ro1a30e7t._lso=9a00ra mrt0hir6 ]he0r0[0he2:4  28 n15,,1r d0ue:0af0f )0ef0f   ] b 9 u. xff0 . x0f0 . x0f0 . x0f0 . xcf0 . x8f0 . x1f3 .B4,=N Ph n ]e o[0r Sp ]tyn,=0Rq Gpc0cmnH[0c_af_6x8n0dbzns0
+5 y21la oul0l  s aekudr.M50dln[3 n[1he6 y0uhe6 y ncs ]nb[170 [61.3 ]52i  ts3[3 74-r
+1v P0s0S ren.4..etud--- ]t 46 ns00:os30:os70:os7.5ce0.uU0Trt  U   n[0n
+0r:fyfd0 .cnis.seT3ans8ln[3dn3/g-t P9pe@hn-0dam tv  nae-i301pe-1cd00dam3 b-[8gfsw=04/g-ni302pe5ft32pe5ih1
+5u/3 b- ]ir0aa0 n-gct34peptr0 omm b7lr3et38 -m
+8io11o1[6emse ]t0001ee5ee[9td pk9y [0no pi0s(f0 1 htrdn.8_:r1l 7ot  mdselm//wl/l810
+8l 50gat eek e[31mhf.3mi2 a0 a ]2ut
+9uodn3miawi,03miae0sde)1s0 k2 a0 94[41m: A2m.ss7Aeh 2:isu.me0t[3d
+3d
+8d
+0Aec4Aec3Aec7Aec7 c213:is 2uv.p0md0o o 0o[2d3a14:iso ig0t
+0d eo o 0 []ict[6o ]img  M:00[6ds8>
+9eef-4prf 04adf002ra7cdE0[3r[4r ]   i Wr Wr aq0md0r ig0 [1 :g e0g o  ] e0mr [8adime ]c da ekmA 2ac _U9Aeou0md0t 2uv0164:i. 9Aeoo[9d1tg ]i31r ig1:u0md0t 2uv0r  n7  ]i5t
+0d dr ig4 [8d1n35:i.o o 0o[2d1c15:i.o o 0r ig2g ]i5o[7d1t
+0d 1 2a0e3[8dd 6is2 pt3fe.pm8Aea93i0dl2 agu G7 u ]4ds9n-gt G5eg0nct
+5_eI1:9n-gt6h: oip ig0o  ]iop.me0u o _o o 0g   [3p
+2rwp9g g)0si ]ewd1: cb1ed
+1nhgu G2lag0h: oi1nb)o
+3prP2e[8nt11 r:  ivt0sw3g7oet2l
+4t0 n=[9_0Ru
+4 CPS0I(ig3nc_s  ds oa7dm3_0 v00d3 sa
+6oV3om3o0 m3rm3- V 6-0 d  ]1 ]-6c  ncrl n0 n8 v0 v  ]v
+7sm3d:[9i00-:[6s .-20-0 d .-V8d 0-:[554- 8dm3 wp3genos c   u viaao ]acshlpy0_nA0 voa 3 .addgr aq0k=0k=.e14891191292lnr lte4mztamrt0eliref- tmeht3L  rRt eA  rRt eT3lnrz_tt0elirefC0o  K4ga8 ]to
+7b er2[5hn6 e.:s(d  Ul4 y0Ptse2  el[9idtm Rrs.5epm Rr4nt[0 fi01ti.pe   a[1hir1[5ies0td:d8erd ]3  s2pp n0g0 e[5 :np41ce41cz4cvl a0i f0n[53:d5_ tns3o31tr[9t1:aa  x0tii it0xzd0md.:d64uvoi()1c1tit
+8Od/0glat_et  e0y y6dnif0d
+4rrmr_9 ]_:rgs0=x1nir: 7
+8dtmmM6
+9mdDeh t_ecck00g0:cd.r0 cd.r sn i t0a dsa0uka Dx0 30 4.reeEx7l0phl4a0kox.D 0 3 Dx cS90y0re0T0g0:[    21ea[  1lt03dT[ 2s ei[  6sH0reiA[.i3:m[  3lt04dT[ 7l[ ]l[ ]-ko[ ]tfta[ 6c r[ n2cg[.1-snD[ t0at[    2.6817b c-[6 wp[    2.708572]pdo4[ gp31[ ]tnee[  .Rus[3Ae
+[0 0[4Me[2Hu[  ]e  en -[7M c[ He,:[.r [0oi[  6pmn[.r  [8u,1[8:AR7v[1_x [7m: v6[2m:d[.vam(p2 ] i
+a34Ct:[9m1x[7u A5 [880:[6_cVX [ 4f [    .r0a.t pm[ 4icgqdu
+[ st[ 7tc[ ] 30xoq[3D[ 9t0afs[ s : o[ 61spa[ 2n i1[1)Msa
+[1I/k.[90t2o
+](Ew-3[8C)Ia[ . v2[92rn:4[6:r[. sr[ PCmt[2Pie[3Tda[ ssnv[3btte[.ceer8[8re e[7edam[0 wp bp: e ]ewd8 ]ewdu[8edaa[4edad[3k=[2o[.e1 ] [109 aq[7r[.r:sb[ ssnva[2re e[8 nei[1eet Bi ]ewdn uSpe r[1re 0 ] ssl[1a_ l[   ewd l[    3.246713] ata1: SATA link down (SStatus 0 Sr[    3.334521] max77686-rtc max77620-rtc: rtc core: registered max77620-rtc as rtc0
+[    3 2rg0r[3a0 ak[6dd[ 69 .[    4.172563] gspca_main: v2.14.0 registered
+[    4.177688] usbcore: registered new interface driver gspca_zc3xx
+[    4.185006] max77620-pow2e  [  9e-[ Ae[3ac[  v ,5[._pbsnI[2fwp
+[8_fr[  2fwxr0t[   v m0r2[ ._pe0 1[  wrn10d[ pei=0r3[  v m0r:[ 2rnp=,t[ 4n-7rus[ ._pe5,=
+[ ]i:w1,t[ .iui[  2a l2s@
+[4hD Ii[.ctO[ dSri
+[   ce 0[  p_s:[ .r eK[ 4 neh[ uHv[ n0p[ 7psir
+[3sdMd[4a.p_[.vria[3s3Me[6t0n[ cipi[ onfen[ cn.ri[4reu i[3ec0:   t.0d  t.0d ]e0.e ]e0.e ]tc[ 1-0:eda[3apty[ 4v0g=0i[ 9v0oeX0X4[ 9-0i:vRx 00[4gbu  6x45[ 0 .nivRx 00[  vtucr[8[0[ 4gbudr4849[ 0i0g  x x[9-0:R2[ 46burts[.r0: v
+[ 7 .ici[8v0sce[  ]irtvrg[ 8v0c:ls[.r0:vrg[8v0@hr[  t-0romb8e8[ 6i-prc[ 6-0doa[ ]tei
+[6agi [1tbtC[4s_sO[.r2ap[ tgxg ]i.iO[3b0bd[280:b[110:b[4a1po[112:b[113:b[280 e[9b0r  ]i.dK tgxe
+.r22r[380 e[35: 4r_m  plce plce ael4.sd=
+1_ouc[1_0ig
+4gntlph_[8elv_vee essz  h0sm[8-0t[9s8ee
+.r :d to.ep[6n0i[0s8ee
+4g6Ge3
+pfIo[4akui([1u9rp[  d.da0n0[ 160:a0n0[ eti_I5 ]a0UB
+d.it
+[4a3teeb[2b plt
+iprer ]nceA
+[.ha: a
+[.heee :[31orrr[42payf[  aPd0dt[ 4g/ 1up[4asft [8ad ts[52payf[7ad ta[ 3adadtd[5addp[.rumel[2f[  me[ 9smxlPsne[ ]tlu
+[ t8-d-a[ 4grt  p[ 5--5MMg[ 1no IIo[ 2-io66[ ]tlu
+[ ]tlu
+[ 1-io99[ 0dbsFI [ .re5A p[  ]tlu21k[ 5--5MDi[  t8-d<
+[ 9smxAMn[  e6r:-m[  3no IAg[  e6r:-m[  4no IAg[  e6r:-m[  1no -Pn[  t8-d<2[3sPSp[ ]s4Og[ 4pno acup[ 4grt dg[  1enac[5rO[4rt
+[0i[4 n[ n .c4[4irl
+]ni[ ]to[6s2e[1sc7[4sc5[  or/sepcate[ 0 t[6sbar[5dle[8dv[4psz[05ie[4r[.e1[6o[.e1 ] [219 Wr[2gxoG[7rh G[5a. r
+[0rhfd8ww2 x5 kl[9a. r
+4i2So [8oGA,: ] eI
+4gguUt ] ao[6a  s[5ot_Tr tost[6a Ot ewd [5d0eo[9aai
+4io ([5g g)  -vep[ e0t 145[4mdo[2err
+pi[7cb[7dl[9v ns[2dl[65g dd[7d [.m [.v:
+.vvg n2 db[9d[2di[4bl ]:
+.va[0i[3 ti[1grt[5 :d[2t0epr0[0gstou[    5.874722] mmc0: SDHCI controller o06 66
+d4:ea0[6rd nc[    5.912692]cSn[    5.92 iie[    1Cr.0s- [ 9r e m4 0[5m2B m:0tM ]t1t0[8p0r0[ 4l37ppp ]iC8[1gsD[0t0 [0-0r 4[.c0wd:[0i0lrMl[    6.070756] gpio tegra-gpio wake71 for gpiP[ 2Cr.0s- [    6.135008] EXT4-fs (mmcblk0p1): 3 orphan inodesl[4f1 [    65f1fidp
+d  7[    3 [ 6ekyf00[ 6eayf 1[    6.229896] mmc1 tuning done saved ta
+]u.[2n0f[3n13[3n2f[7i]f ]n:[5tw[.1n m_0[5a e[5DI00[0u x)  leDa[    6.329341] random: syste eesip)[  1snr(aov[     s TIRS T+ ED+
+[7mtt
+[    6.3  eu[    6.403094] :n drs
+[  5:ytn6, i[ 9:ttn6, i[ .d-iu e a[   t:zreboe[ 9:ttn6, i[ 6ndn drs
+[ 8yglmy0na[    6.558043] systemd[1]: Listening on Syslog Socket.
+[    6.5653eero[  yr s[ 6[ .[ 8[ te[  9] t[ 4[nl[  sL kg[  ytrRWr[ 2mee s[ yete[ 6eevmN
+[.tay[  ytn.[  .tr u sr.[  5]Sk[    66eti.[    mnl.[    lu[    6  ad[ .tay\i[7rwp[  11 lta
+[ yet[ 6ssdo[ 61tp.[  6suF[ yta
+[    6.863495] systemd-journald[257]: Received request to flush runtime journal from PID[    6.895174] random: nnn[    7.095410] tegra-pcie 10003000.pcie-controller: 4x1, 1x1 configuration
+[    7.105787] tegra-pcie 10003000.pcie-controller: PCIE: Enable powe
+[    1e:r4[   2ecepg[    7.153943] xhci-teg.ta o[    7.287721] dhd_module_init in
+[    7.301898] tegra_net_perf_init: cannot get wifi sclk
+[    7.320501] found wifi platform device bcmdhd_wlan
+[    7.32909gp65[  i__o e[  7fdaria[   7pHd[     r [    7.532621] tegra-pcie 10003000.pcie-controller: link 0 down, retrying
+[    7.574694] wifi_platform_bus_enumerate device present 1
+[    7.604682] wifi_platform_bus_enumerate device present 0
+[    7.639290] F1 signature read @0x104[    7.725325] F1 signature OK, socitype:0x1 chip:0x4354 rev:0x1 pkg:0x2
+[    7.772023] DHD: dongle ram size is set to 786432(81[    7.797891] wifi_altti[    .ie
+[    73EtRegid[ 0ane_ [    7.830380] CO_skc[    7.83038arc:[ 3te3
+[6hds[  d i[  ]tr8 orih 4[.ri[ .ia 4
+8[._:no[ 9t0idi  [8_t
+[    .r3nne[    8.153710] xhci-tegra 3530000.xhci: Firmware timestamp: 2017-03-31 06:21:56 UTC, Version: 55.07 release
+[    8.166717] xhci-tegra 3530000. o[    8.1PF: y[ ] iudb[ 5gxrdii8[1e.90[ 6:vib=[ 1bdgrr[6:Ht[ suitc[8su0[ uUd[4:s[ 8act[ ] iudb[4:vib=[ 2uBi S=[2s:C[ 9 r.c[ si5[ 91 [ u3c[.r:3
+[20:s
+[4rhg[ h3eG[   8io 5[ 3AD0o[    8.388707] tegra-pcie 10000tkt[   1e:n
+2DE0o  0 ,2[6iebl [8d3ao[    8.444419] t[ sl[   ]6 f1[    8.472603 trc4:[6UUbuntu .gttegnva
+Last login: Sun Nov 19 22:36:44 UTC 2017 on ttyS0
+[    8.667609] mmc1: queuing unknown CIS tuple 0x80 (5 bytes)
+[    8.751569] sdhci-tegra 3440000.sdhci: Tuning already done, restoring the best tap value : 59
+[    8.774579] F1 signature read @0x18000000=0x172143[    8.793625]F ex1[8Dmto [    8.826846] tegra0- ,[    8.893228] dhdsdio_write_vars: Download, Upload and compare e[    8.946867] dhd_bus_init: enable 0x06, ready 0d[ 8aai
+8io ( n6[  9f_[ 7aoM:[    8.8trht [    90a=4:7(Ib[   0i_lN=  _Welcome to Ubuntu 16.04.3  4
+asnM ln
+sogppet[    9.230310] CFGP2P-ERROR) wl_cfgp2p_add_p2p_disc_if : P2P interface registered
+[    9.256740] tegra-pcie 10003000.pcie-controller: link 2 down, retrying
+[   8F,rnvidia@tegra-ubuntu:~$ [    9.324454] fuse init (API ver[    9.656710] tegra-pcie 10003000.pcie-controller: link 2 down, retrying
+[    9.665319] tegra-pcie 10003000.pcie-controller: link 2 down, igi.r3nIoe[ 0ipli [    9.874599] cfg80211: World regulatory domain updated:
+[    9.894229] cfg80211:  DFS Master region: unset
+[    9.910082] cfg80211:   (start_freq - end_freq @ bandda, m[    9.932988]: 00A,[    9.956194] c2084(B[    9.976227f2-z)0A[  9g1  , , [   10.020386T0 [   10.0f5-zH0 [   10.] H   ([   109107 )B
