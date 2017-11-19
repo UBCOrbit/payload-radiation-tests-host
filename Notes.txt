@@ -1,0 +1,2 @@
+List Serial Devices:
+wmic path Win32_SerialPort

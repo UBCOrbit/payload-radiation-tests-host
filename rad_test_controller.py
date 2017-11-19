@@ -11,9 +11,12 @@ import threading
 import time
 import serial
 import queue
+import os
 
 SIGNAL_HEARTBEAT = "HEARTBEAT" # no \n for checking incoming signals because of newline inconsistencies (\r\n vs \n vs \r)
 SIGNAL_POWER_CYCLE = "POWER_CYCLE\n" # \n for outgoing signal
+
+DIR_OUTPUT = "output"
 
 class Device:
     __slots__ =  ['id', 'commonName', 'baud', 'timeout', 'ser']
@@ -26,16 +29,19 @@ class Device:
 
 class RadTestController():
 
-    def __init__(self):
+    def __init__(self, tx2Port, arduinoPort):
         self.windows = False
         self.unix = False
         self.fd = None
         self.old_settings = None
 
-        self.tx2 = Device(id='COM7', commonName='TX2', baud=9600, timeout=5, ser=None)
-        self.arduino = Device(id='COM8', commonName='Arduino', baud=9600, timeout=1, ser=None)
+        self.tx2 = Device(id=tx2Port, commonName='TX2', baud=9600, timeout=5, ser=None)
+        self.arduino = Device(id=arduinoPort, commonName='Arduino', baud=9600, timeout=1, ser=None)
 
         self.heartbeatReceived = False
+        
+        if not os.path.exists(DIR_OUTPUT):
+            os.makedirs(DIR_OUTPUT)
 
         try:
             # Windows
@@ -143,6 +149,7 @@ class RadTestController():
             print("Disconnecting from TX2...")
             self.tx2.ser.close()
             self.tx2.ser = None
+            self.heartbeatReceived = False
             print("Disconnected!")
 
     def __disconnect_arduino(self):
@@ -168,38 +175,53 @@ class RadTestController():
         self.tx2.ser.flushInput()
         self.arduino.ser.flushInput()
 
-        while True:
-            if not self.input_queue.empty():
-                keyboardInput = self.input_queue.get()
-                if ord(keyboardInput) == 27: # Escape key
-                    self.stop_queue.put('stop')
-                    self.cleanUp()
-                    sys.exit(1)
-                elif ord(keyboardInput) == 13: # Enter key
-                    # Manuall cycle power
-                    self.__cycle_power()
+        print("\nWaiting for HEARTBEAT...\n")
 
-            # Check for TX2 output:
-            try:
-                lineBytes = self.tx2.ser.readline()
-                line = lineBytes.decode('utf-8').strip()
-                if line == '':
-                    if self.heartbeatReceived: # Only start caring about the TX2 once we've received a heartbeat signal
-                        # TX2 Not Responding
-                        print("\nERROR: TX2 Not Responding\n")
+        self.currentFilename = DIR_OUTPUT + "/output_" + str(int(time.time())) + ".txt"
+        
+        with open(self.currentFilename, 'w') as outputFile:
+            while True:
+                if not self.input_queue.empty():
+                    keyboardInput = self.input_queue.get()
+                    if ord(keyboardInput) == 27: # Escape key
+                        self.stop_queue.put('stop')
+                        self.cleanUp()
+                        sys.exit(1)
+                    elif ord(keyboardInput) == 13: # Enter key
+                        # Manuall cycle power
                         self.__cycle_power()
-                elif line == SIGNAL_HEARTBEAT:
-                    self.heartbeatReceived = True
-                else:
-                    print("RECEIVED: " + line)
-            except IOError as e:
-                # Manually raise the error again so it can be caught outside of this method
-                raise e
 
+                # Check for TX2 output:
+                try:
+                    lineBytes = self.tx2.ser.readline()
+                    line = lineBytes.decode('utf-8').strip()
+                    if line == '':
+                        if self.heartbeatReceived: # Only start caring about the TX2 once we've received a heartbeat signal
+                            # TX2 Not Responding
+                            print("\nERROR: TX2 Not Responding\n")
+                            self.__cycle_power()
+                    elif line == SIGNAL_HEARTBEAT:
+                        if not self.heartbeatReceived:
+                            print("\nFirst HEARTBEAT received\n")
+                        self.heartbeatReceived = True
+                    else:
+                        print("RECEIVED: " + line)
+                        outputFile.write(line + "\n")
+                        #self.resultsFile.write(line)
+
+                except IOError as e:
+                    # Manually raise the error again so it can be caught outside of this method
+                    raise e
+# end RadTestController
 
 # MAIN
 
-controller = RadTestController()
+if len(sys.argv) <= 2:
+    print("\nUsage:")
+    print("rad_test_controller.py <tx2 port> <arduino port>\n")
+    exit(1)
+
+controller = RadTestController(sys.argv[1], sys.argv[2])
 
 while True:
     try:
@@ -215,3 +237,4 @@ while True:
         break
 
     controller.disconnect()
+# end while
